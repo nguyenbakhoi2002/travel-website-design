@@ -1,0 +1,28 @@
+import classNames from "classnames/bind";
+import styles from './Button.module.scss';
+import { Link } from "react-router-dom";
+
+const cx = classNames.bind(styles)
+const STYLES = ['btn--primary', 'btn--outline'];
+const SIZES = ['btn--medium', 'btn--large'];
+export const Button=({
+    children, 
+    type,
+    onClick,
+    buttonStyle,
+    buttonSize,
+})=>{
+    const checkButtonStyle = STYLES.includes(buttonStyle)?buttonStyle:STYLES[0]
+    const checkButtonSize = STYLES.includes(buttonSize)?buttonSize:SIZES[0]
+    return (
+        <Link to='/sign-up' className={cx('btn-mobile')}>
+            <button
+            className={cx('btn', `${checkButtonStyle}`, `${checkButtonSize}`)}
+            onClick={onClick}
+            type={type}
+            >
+                {children}
+            </button>
+        </Link>
+    )
+}
